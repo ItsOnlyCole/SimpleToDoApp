@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "J8/SeqkgOX1bUwZI7FmeYyawZc9+Q0RO5FDWYnIyPexWir2eYd20mrGnpf46UX8+yPTebGHNXLzS7pS8Xb0xVQ==",
+  "dgSpecHash": "ib23KCKoRduyuUfANUrPWC54fEAMwMqsBeHjCQZxoVLis+IOGaEVI02tust7pQi4uY+o4Is3Yf/OWI7jvoSslw==",
   "success": true,
   "projectFilePath": "/home/itsonlycole/Programming/SimpleToDoApp/SimpleToDoApp.csproj",
   "expectedPackageFiles": [
     "/home/itsonlycole/.nuget/packages/dapper/2.0.78/dapper.2.0.78.nupkg.sha512",
+    "/home/itsonlycole/.nuget/packages/dapper.contrib/2.0.78/dapper.contrib.2.0.78.nupkg.sha512",
     "/home/itsonlycole/.nuget/packages/microsoft.data.sqlite.core/5.0.2/microsoft.data.sqlite.core.5.0.2.nupkg.sha512",
     "/home/itsonlycole/.nuget/packages/microsoft.dotnet.platformabstractions/3.1.6/microsoft.dotnet.platformabstractions.3.1.6.nupkg.sha512",
     "/home/itsonlycole/.nuget/packages/microsoft.entityframeworkcore/5.0.2/microsoft.entityframeworkcore.5.0.2.nupkg.sha512",
