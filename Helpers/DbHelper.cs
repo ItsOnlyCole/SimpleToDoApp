@@ -12,16 +12,17 @@ namespace SimpleToDoApp.Helpers
 
             return connectionStringBuilder;
         }
-        
-        public bool CheckIfDbExist(SqliteConnectionStringBuilder databaseConnectionString)
+        public void CheckIfDbExist()
         {
-            if(File.Exists(databaseConnectionString.DataSource))
+            var connectionString = this.GetConnection();
+            if(File.Exists(connectionString.DataSource))
             {
-                return true;
+                //Do Nothing
             }
             else
             {
-                return false;
+                CreateDb();
+                CreateTable();
             }
         }
         public void CreateDb()
