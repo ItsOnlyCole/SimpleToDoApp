@@ -5,6 +5,8 @@ namespace SimpleToDoApp.Helpers
 {
     public class DbHelper
     {
+        public DbHelper() {}
+        
         public SqliteConnectionStringBuilder GetConnection()
         {
             var connectionStringBuilder = new SqliteConnectionStringBuilder();
