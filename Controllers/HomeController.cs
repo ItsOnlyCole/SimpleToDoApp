@@ -56,9 +56,10 @@ namespace SimpleToDoApp.Controllers
                     else
                     {
                         var updateCmd = db.CreateCommand();
-                        updateCmd.CommandText = $"UPDATE todo_items SET title = {viewModel.EditableItem.Title} WHERE id = {viewModel.EditableItem.Id}";
+                        updateCmd.CommandText = $"UPDATE todo_items SET title = @title WHERE id = @id";
+                        updateCmd.Parameters.AddWithValue("title", viewModel.EditableItem.Title);
+                        updateCmd.Parameters.AddWithValue("id", viewModel.EditableItem.Id);
                         updateCmd.ExecuteNonQuery();
-                        Console.WriteLine("Executing Update Cmd");
                     }
                 }
                 return RedirectToAction("Index");
