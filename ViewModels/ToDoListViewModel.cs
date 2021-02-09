@@ -31,10 +31,10 @@ namespace SimpleToDoApp.ViewModels
                     {
                         ToDoItem toDoItem = new Models.ToDoItem()
                         {
-                            Id = (int)reader["id"],
-                            DateAdded = (DateTime)reader["add_date"],
+                            Id = (int)(long)reader["id"],
+                            DateAdded = Convert.ToDateTime(reader["add_date"]),
                             Title = reader["title"].ToString(),
-                            IsDone = (bool)reader["is_done"]
+                            IsDone = Convert.ToBoolean(reader["is_done"])
                         };
                         this.ToDoItems.Add(toDoItem);
                     }

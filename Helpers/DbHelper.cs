@@ -10,7 +10,7 @@ namespace SimpleToDoApp.Helpers
         public SqliteConnectionStringBuilder GetConnection()
         {
             var connectionStringBuilder = new SqliteConnectionStringBuilder();
-            connectionStringBuilder.DataSource = "./Databases/ToDoList.db";
+            connectionStringBuilder.DataSource = "Databases/ToDoList.db";
 
             return connectionStringBuilder;
         }
