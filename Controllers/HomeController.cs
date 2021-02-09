@@ -51,7 +51,6 @@ namespace SimpleToDoApp.Controllers
                         insertCmd.CommandText = "INSERT INTO todo_items (add_date,title,is_done) VALUES (@date, @title, 0)";
                         insertCmd.Parameters.AddWithValue("date", viewModel.EditableItem.DateAdded);
                         insertCmd.Parameters.AddWithValue("title", viewModel.EditableItem.Title);
-                        //insertCmd.CommandText = "INSERT INTO todo_items (add_date,title,is_done) VALUES ('2021-02-01 13:01:00', 'InLine Test', 0)";
                         insertCmd.ExecuteNonQuery();
                     }
                     else
