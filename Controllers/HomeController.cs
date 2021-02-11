@@ -70,15 +70,51 @@ namespace SimpleToDoApp.Controllers
             }
         }
 
-/*        public IActionResult ToggleIsDone(int id)
+        public IActionResult ToggleIsDone(int id)
         {
-            DbHelper dbHelper = new DbHelper();
-            using (var db = new SqliteConnection(dbHelper.GetConnection().ConnectionString))
+            if(ModelState.IsValid)
             {
-                
-                var toggleCmd = db.CreateCommand();
-                toggleCmd.CommandText = $"UPDATE todo_items SET is_done = "
+                DbHelper dbHelper = new DbHelper();
+                using (var db = new SqliteConnection(dbHelper.GetConnection().ConnectionString))
+                {
+                    bool completed = false;
+                    db.Open();
+                    //Pulls Info for specific item based on ID
+                    var itemPullCmd = db.CreateCommand();
+                    itemPullCmd.CommandText = "SELECT is_done FROM todo_items WHERE id = @id";
+                    itemPullCmd.Parameters.AddWithValue("id", id);
+                    using (SqliteDataReader reader = itemPullCmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            completed = Convert.ToBoolean(reader["is_done"]);
+                        }
+                    }
+
+                    //Checks if task is done or not then updates database based on that.
+                    var updateIsDoneCmd = db.CreateCommand();
+                    updateIsDoneCmd.CommandText = "UPDATE todo_items SET is_done = @newValue WHERE id = @id";
+                    updateIsDoneCmd.Parameters.AddWithValue("id", id);
+                    if(completed == false)
+                    {
+                        updateIsDoneCmd.Parameters.AddWithValue("newValue", 1);
+                    }
+                    else if (completed == true)
+                    {
+                        updateIsDoneCmd.Parameters.AddWithValue("newValue", 0);
+                    }
+                    else
+                    {
+                        Console.WriteLine("!!!Error with updating completed boolean!!!");
+                    }
+                    updateIsDoneCmd.ExecuteNonQuery();
+                }
+                return RedirectToAction("Index");
             }
-        }*/
+            else
+            {
+                return View("Index", new ToDoListViewModel());
+            }
+        }
     }
 }
